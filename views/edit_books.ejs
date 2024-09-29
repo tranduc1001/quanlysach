@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%-  title  %>
+    </title>
+</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('layout/header') %>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg mx-auto mt-4">
+                <div class="card shadow">
+                    <div class="card-header bg-success">
+                        <h5 class="text-light">Edit Book (<%= book.name%>)</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <form action="/edit/<%= book._id %>" method="post" id="add-form" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="name">Tên sách</label>
+                            <input type="text" value="<%= book.name %>" name="name" class="form-control form-control-lg" placeholder="Nhập tên sách" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="author">Tác giả</label>
+                            <input type="text" value="<%= book.author %>" name="author" class="form-control form-control-lg" placeholder="Nhập tên tác giả" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price">Giá tiền</label>
+                            <input type="number" value="<%= book.price %>" name="price" class="form-control form-control-lg" placeholder="Nhập giá tiền" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image">Ảnh</label>
+                            <input type="file" class="form-control-lg" name="image"required/>
+                            <img src="/<%= book.image %>" width="100" class="img-thumbnail mt-1">
+                        </div>
+                        <input type="hidden" name="old_image" value="<%= book.image %>" class="img-thumbnail"/>
+                        <div class="mb-3 d-grid">
+                            <input type="submit" name="submit" value="Edit Book" class="btn btn-success btn-lg"> 
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
